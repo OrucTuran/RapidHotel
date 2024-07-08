@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HotelProject.DataAccessLayer.Abstract
+namespace HotelProject.BusinessLayer.Abstract
 {
-    public interface IServiceDal : IGenericDal<Service>
+    public interface IRoomService : IGenericService<Room>
     {
     }
 }
