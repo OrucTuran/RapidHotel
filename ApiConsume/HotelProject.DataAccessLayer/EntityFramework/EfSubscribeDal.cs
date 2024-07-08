@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HotelProject.DataAccessLayer.EntityFramework
 {
-    class EfSubscribeDal : GenericRepository<Subscribe>, ISubscribeDal
+    public class EfSubscribeDal : GenericRepository<Subscribe>, ISubscribeDal
     {
         public EfSubscribeDal(Context context) : base(context)
         {

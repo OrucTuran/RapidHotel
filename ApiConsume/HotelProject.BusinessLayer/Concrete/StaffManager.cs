@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HotelProject.BusinessLayer.Concrete
 {
-    class StaffManager : IStaffService
+    public class StaffManager : IStaffService
     {
         private readonly IStaffDal _staffDal;
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HotelProject.BusinessLayer.Concrete
 {
-    class SubscribeManager : ISubscribeService
+    public class SubscribeManager : ISubscribeService
     {
         private readonly ISubscribeDal _subscribeDal;
 

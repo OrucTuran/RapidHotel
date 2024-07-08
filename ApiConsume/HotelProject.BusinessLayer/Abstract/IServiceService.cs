@@ -7,7 +7,7 @@ using HotelProject.EntityLayer.Concrete;
 
 namespace HotelProject.BusinessLayer.Abstract
 {
-    interface IServiceService : IGenericService<Service>
+    public interface IServiceService : IGenericService<Service>
     {
     }
 }

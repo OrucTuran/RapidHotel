@@ -9,33 +9,38 @@ using System.Threading.Tasks;
 
 namespace HotelProject.BusinessLayer.Concrete
 {
-    class ServiceManager : IServiceService
+    public class ServiceManager : IServiceService
     {
-        private readonly IServiceDal _roomDal;
+        private readonly IServiceDal _serviceDal;
+
+        public ServiceManager(IServiceDal serviceDal)
+        {
+            _serviceDal = serviceDal;
+        }
 
         public void TDelete(Service t)
         {
-            _roomDal.Delete(t);
+            _serviceDal.Delete(t);
         }
 
         public Service TGetByID(int id)
         {
-            return _roomDal.GetByID(id);
+            return _serviceDal.GetByID(id);
         }
 
         public List<Service> TGetList()
         {
-            return _roomDal.GetList();
+            return _serviceDal.GetList();
         }
 
         public void TInsert(Service t)
         {
-            _roomDal.Insert(t);
+            _serviceDal.Insert(t);
         }
 
         public void TUpdate(Service t)
         {
-            _roomDal.Update(t);
+            _serviceDal.Update(t);
         }
     }
 }

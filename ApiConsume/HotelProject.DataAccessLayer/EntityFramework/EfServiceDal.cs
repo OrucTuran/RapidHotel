@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HotelProject.DataAccessLayer.EntityFramework
 {
-    class EfServiceDal:GenericRepository<Service>,IServiceDal
+    public class EfServiceDal : GenericRepository<Service>, IServiceDal
     {
         public EfServiceDal(Context context) : base(context)
         {
