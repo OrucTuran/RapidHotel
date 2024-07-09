@@ -39,7 +39,7 @@ namespace HotelProject.WebApi.Controllers
             }
             var values = _mapper.Map<Room>(roomAddDTO);
             _roomService.TInsert(values);
-            return Ok();
+            return Ok("Insert successful");
         }
         [HttpPut]
         public IActionResult UpdateRoom(RoomUpdateDTO roomUpdateDTO)
@@ -50,7 +50,7 @@ namespace HotelProject.WebApi.Controllers
             }
             var values = _mapper.Map<Room>(roomUpdateDTO);
             _roomService.TUpdate(values);
-            return Ok();
+            return Ok("Update successful");
         }
     }
 }
