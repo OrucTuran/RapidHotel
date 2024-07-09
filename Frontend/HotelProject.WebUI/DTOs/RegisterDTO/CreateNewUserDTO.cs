@@ -15,7 +15,7 @@ namespace HotelProject.WebUI.DTOs.RegisterDTO
         public string Surname { get; set; }
 
         [Required(ErrorMessage = "Kullanıcı adı alanı gereklidir.")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [Required(ErrorMessage = "Mail alanı gereklidir.")]
         public string Mail { get; set; }
