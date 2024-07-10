@@ -30,7 +30,7 @@
 
         @await Component.InvokeAsync("_TeamPartial");
 
-        @await Component.InvokeAsync("_NewsletterPartial");
+        @await Html.PartialAsync("SubscribePartial");
 
         @await Component.InvokeAsync("_FooterPartial");
 
