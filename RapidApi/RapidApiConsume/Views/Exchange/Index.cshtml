@@ -1,0 +1,25 @@
+﻿@model List<ExchangeViewModel.Exchange_Rates>
+
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="container">
+    <br />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Döviz Kodu</th>
+                <th>Birim Fiyat</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.currency</td>
+                    <td>@item.exchange_rate_buy</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
