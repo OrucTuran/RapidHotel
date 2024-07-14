@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace HotelProject.WebUI.Controllers
@@ -27,6 +28,18 @@ namespace HotelProject.WebUI.Controllers
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultBookingDTO>>(jsonData);
                 return View(values);
+            }
+            return View();
+        }
+        public async Task<IActionResult> ApprovedReservation(ApprovedReservationBookingDTO approvedReservationBookingDTO)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(approvedReservationBookingDTO);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PutAsync("http://localhost:2424/api/aaa/", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Index));
             }
             return View();
         }
