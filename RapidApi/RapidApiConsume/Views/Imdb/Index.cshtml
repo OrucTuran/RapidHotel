@@ -1,0 +1,32 @@
+﻿<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="container">
+    <br />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Genre</th>
+                <th>Rating</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Model)
+            {
+                <tr>
+                    <td>@movie.rank</td>
+                    <td>@movie.title</td>
+                    <td>@movie.description</td>
+                    <td><img src="@movie.image" alt="Movie Image" style="max-height: 100px;" /></td>
+                    <td>@string.Join(", ", movie.genre)</td>
+                    <td>@movie.rating</td>
+                    <td>@movie.year</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
