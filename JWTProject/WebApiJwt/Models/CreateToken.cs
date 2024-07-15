@@ -10,7 +10,7 @@ namespace WebApiJwt.Models
 {
     public class CreateToken
     {
-        public void TokenCreate()
+        public string TokenCreate()
         {
             var bytes = Encoding.UTF8.GetBytes("aspnetcoreapiapi");
 
@@ -23,12 +23,12 @@ namespace WebApiJwt.Models
                 issuer: "http://localhost",
                 audience: "http://localhost",
                 notBefore: DateTime.Now,
-                expires: DateTime.Now.AddMinutes(3),
+                expires: DateTime.Now.AddSeconds(20),
                 signingCredentials: credentials
             );
 
             JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
-            handler.WriteToken(token);
+            return handler.WriteToken(token);
         }
     }
 }

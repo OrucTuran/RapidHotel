@@ -37,7 +37,8 @@ namespace WebApiJwt
                     ValidAudience = "http://localhost",
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("aspnetcoreapiapi")),
                     ValidateIssuerSigningKey = true,
-                    ValidateLifetime=true //tokenin gecerli olma suresi
+                    ValidateLifetime = true, //tokenin gecerli olma suresi
+                    ClockSkew = TimeSpan.Zero
                 };
             });
             services.AddControllers();
@@ -58,7 +59,7 @@ namespace WebApiJwt
             }
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
