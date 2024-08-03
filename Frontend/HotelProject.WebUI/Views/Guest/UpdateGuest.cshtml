@@ -1,0 +1,20 @@
+﻿@model UpdateGuestDTO
+
+@{
+    ViewData["Title"] = "UpdateGuest";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="ID" />
+    <label>Oda Numarası</label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <br />
+    <label>Oda Başlığı</label>
+    <input type="text" asp-for="Surname" class="form-control" />
+    <br />
+    <label>Fiyat Bilgisi</label>
+    <input type="text" asp-for="City" class="form-control" />
+    <br />
+    <button class="btn mb-1 btn-rounded btn-outline-primary">Müşteri Bilgilerini Güncelle</button>
+</form>
