@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+
+@*CONTACT INDEX SAYFASI*@
+
+<!DOCTYPE html>
+<html lang="tr">
+
+@await Component.InvokeAsync("_HeadPartial");
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        @await Component.InvokeAsync("_SpinnerPartial")
+
+        @await Component.InvokeAsync("_NavbarPartial")
+
+        @await Component.InvokeAsync("_ContactCoverPartial")
+
+        @*@await Component.InvokeAsync("_ReservationPartial")*@
+
+        @await Html.PartialAsync("/Views/Contact/SendMessage.cshtml")
+
+        @await Html.PartialAsync("/Views/Default/SubscribePartial.cshtml")
+
+        @await Component.InvokeAsync("_FooterPartial")
+
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+    @await Component.InvokeAsync("_ScriptsPartial")
+</body>
+
+</html>
