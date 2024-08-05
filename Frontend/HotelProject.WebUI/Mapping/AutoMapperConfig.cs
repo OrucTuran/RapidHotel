@@ -2,6 +2,7 @@
 using HotelProject.EntityLayer.Concrete;
 using HotelProject.WebUI.DTOs.AboutDTO;
 using HotelProject.WebUI.DTOs.BookingDTO;
+using HotelProject.WebUI.DTOs.GuestDTO;
 using HotelProject.WebUI.DTOs.LoginDTO;
 using HotelProject.WebUI.DTOs.RegisterDTO;
 using HotelProject.WebUI.DTOs.ServiceDTO;
@@ -15,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace HotelProject.WebUI.Mapping
 {
-    public class AutoMapperConfig:Profile
+    public class AutoMapperConfig : Profile
     {
         public AutoMapperConfig()
         {
@@ -38,7 +39,8 @@ namespace HotelProject.WebUI.Mapping
             CreateMap<CreateBookingDTO, Booking>().ReverseMap();
             CreateMap<ApprovedReservationBookingDTO, Booking>().ReverseMap();
 
-
+            CreateMap<CreateGuestDTO, Guest>().ReverseMap();
+            CreateMap<UpdateGuestDTO, Guest>().ReverseMap();
         }
     }
 }
