@@ -46,6 +46,13 @@ namespace HotelProject.WebUI
                 .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(10); //sisteme girildikten sonra ne kadar sure sistemde kalsin giris yapmadan kalsin
+                options.LoginPath = "/Login/Index";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,7 +67,9 @@ namespace HotelProject.WebUI
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
+
             app.UseAuthentication();
+
             app.UseRouting();
 
             app.UseAuthorization();
