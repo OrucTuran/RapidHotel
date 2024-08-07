@@ -29,4 +29,9 @@
     <ProjectReference Include="..\HotelProject.EntityLayer\HotelProject.EntityLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\" />
+    <Folder Include="Texts\" />
+  </ItemGroup>
+
 </Project>
