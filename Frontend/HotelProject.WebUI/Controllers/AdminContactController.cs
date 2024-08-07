@@ -23,28 +23,41 @@ namespace HotelProject.WebUI.Controllers
         public async Task<IActionResult> Inbox()
         {
             var client = _httpClientFactory.CreateClient();
+
             var responseMessage = await client.GetAsync("http://localhost:2424/api/Contact");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<InboxContactDTO>>(jsonData);
+                ViewBag.contactCount = values.Count;
                 return View(values);
             }
-            return View();
+            else
+            {
+                return View();
+            }
         }
+
 
         public async Task<IActionResult> Sendbox()
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("http://localhost:2424/api/SendMessage");
+
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultSendboxDTO>>(jsonData);
+                ViewBag.sendMessageCount = values.Count;
                 return View(values);
             }
-            return View();
+            else
+            {
+                ViewBag.sendMessageCount = 0;
+                return View();
+            }
         }
+
 
         [HttpGet]
         public IActionResult AddSendMessage()
@@ -100,5 +113,18 @@ namespace HotelProject.WebUI.Controllers
             }
             return View();
         }
+
+        //public async Task<IActionResult> GetContactCount()
+        //{
+        //    var client = _httpClientFactory.CreateClient();
+        //    var responseMessage = await client.GetAsync("http://localhost:2424/api/Contact/GetContactCount");
+        //    if (responseMessage.IsSuccessStatusCode)
+        //    {
+        //        var jsonData = await responseMessage.Content.ReadAsStringAsync();
+        //        var values = JsonConvert.DeserializeObject<List<InboxContactDTO>>(jsonData);
+        //        return View(values);
+        //    }
+        //    return View();
+        //}
     }
 }
