@@ -22,48 +22,71 @@ namespace HotelProject.WebUI.Controllers
 
         public async Task<IActionResult> Inbox()
         {
-            var client = _httpClientFactory.CreateClient();
-
-            var responseMessage = await client.GetAsync("http://localhost:2424/api/Contact");
-            if (responseMessage.IsSuccessStatusCode)
+            // Gelen Kutusu İsteği
+            var inboxResponse = await GetApiResponseAsync("http://localhost:2424/api/Contact");
+            if (inboxResponse != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<InboxContactDTO>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<InboxContactDTO>>(inboxResponse);
                 ViewBag.contactCount = values.Count;
+
+                // Giden Kutusu Sayısı İsteği
+                var sendboxCountResponse = await GetApiResponseAsync("http://localhost:2424/api/SendMessage/GetSendMessageCount");
+                ViewBag.sendMessageCount = sendboxCountResponse ?? "0"; // Hata durumunda default değer
+
                 return View(values);
             }
-            else
-            {
-                return View();
-            }
+            return BadRequest();
         }
+
 
 
         public async Task<IActionResult> Sendbox()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("http://localhost:2424/api/SendMessage");
-
-            if (responseMessage.IsSuccessStatusCode)
+            // Giden Kutusu İsteği
+            var sendboxResponse = await GetApiResponseAsync("http://localhost:2424/api/SendMessage");
+            if (sendboxResponse != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultSendboxDTO>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultSendboxDTO>>(sendboxResponse);
                 ViewBag.sendMessageCount = values.Count;
+
+                // Gelen Kutusu Sayısı İsteği
+                var inboxCountResponse = await GetApiResponseAsync("http://localhost:2424/api/Contact/GetContactCount");
+                ViewBag.contactCount = inboxCountResponse ?? "0"; // Hata durumunda default değer
+
                 return View(values);
             }
-            else
-            {
-                ViewBag.sendMessageCount = 0;
-                return View();
-            }
+            return BadRequest();
         }
 
 
-        [HttpGet]
-        public IActionResult AddSendMessage()
+        private async Task<string> GetApiResponseAsync(string url)
         {
+            var client = _httpClientFactory.CreateClient();
+            var response = await client.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadAsStringAsync();
+            }
+
+            return null;
+        }
+
+
+        public async Task<IActionResult> AddSendMessage()
+        {
+            // Gelen Kutusu Sayısı İsteği
+            var inboxCountResponse = await GetApiResponseAsync("http://localhost:2424/api/Contact/GetContactCount");
+            ViewBag.contactCount = inboxCountResponse ?? "0"; // Hata durumunda default değer
+
+            // Giden Kutusu Sayısı İsteği
+            var sendboxCountResponse = await GetApiResponseAsync("http://localhost:2424/api/SendMessage/GetSendMessageCount");
+            ViewBag.sendMessageCount = sendboxCountResponse ?? "0"; // Hata durumunda default değer
+
             return View();
         }
+
+
         [HttpPost]
         public async Task<IActionResult> AddSendMessage(CreateSendMessageDTO createSendMessage)
         {
