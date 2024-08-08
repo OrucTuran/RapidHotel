@@ -53,8 +53,8 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Kategori" name="Subject">
-                                    <label for="subject">Kategori</label>
+                                   @Html.DropDownListFor(x=>x.MessageCategoryID,(List<SelectListItem>)ViewBag.v,new { @class = "form-control"})
+                                    <label for="subject">Kategori Seçiniz</label>
                                 </div>
                             </div>
                             <div class="col-12">
