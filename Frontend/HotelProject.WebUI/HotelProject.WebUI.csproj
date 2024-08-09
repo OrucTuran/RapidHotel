@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <Folder Include="ValidationRules\Room\" />
+    <Folder Include="Views\MessageCategory\" />
     <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
