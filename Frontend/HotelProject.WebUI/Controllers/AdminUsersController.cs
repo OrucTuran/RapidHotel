@@ -20,7 +20,7 @@ namespace HotelProject.WebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             //var client = _httpClientFactory.CreateClient();
             //var responseMessage = await client.GetAsync("http://localhost:2424/api/AppUser");

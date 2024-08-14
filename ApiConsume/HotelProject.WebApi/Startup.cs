@@ -81,7 +81,7 @@ namespace HotelProject.WebApi
                  });
 
             });//ozellikle bir apinin baska kaynaklar tarafindan comsume edilmesini saglayan metot
-
+            services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddSwaggerGen(c =>
