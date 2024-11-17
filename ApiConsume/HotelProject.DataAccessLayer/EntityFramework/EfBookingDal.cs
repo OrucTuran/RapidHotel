@@ -12,6 +12,7 @@ namespace HotelProject.DataAccessLayer.EntityFramework
 {
     public class EfBookingDal : GenericRepository<Booking>, IBookingDal
     {
+        Context context=new Context();
         public EfBookingDal(Context context) : base(context)
         {
 
@@ -19,7 +20,6 @@ namespace HotelProject.DataAccessLayer.EntityFramework
 
         public void BookingStatusChangeApproved(Booking booking)
         {
-            var context = new Context();
             var values = context.Bookings.Where(x => x.ID.Equals(booking.ID)).FirstOrDefault();
             values.Status = "Onaylandı.";
             context.SaveChanges();
@@ -27,10 +27,15 @@ namespace HotelProject.DataAccessLayer.EntityFramework
 
         public void BookingStatusChangeApproved2(int id)
         {
-            var context = new Context();
             var values = context.Bookings.Find(id);
             values.Status = "Onaylandı.";
             context.SaveChanges();
+        }
+
+        public int GetBookingCount()
+        {
+            var value = context.Bookings.Count();
+            return value;
         }
     }
 }
