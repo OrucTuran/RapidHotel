@@ -53,6 +53,11 @@ namespace HotelProject.BusinessLayer.Concrete
             _bookingDal.Insert(t);
         }
 
+        public List<Booking> TLastSixBookings()
+        {
+            return _bookingDal.LastSixBookings();
+        }
+
         public void TUpdate(Booking t)
         {
             _bookingDal.Update(t);

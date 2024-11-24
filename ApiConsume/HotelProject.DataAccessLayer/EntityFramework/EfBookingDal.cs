@@ -12,7 +12,7 @@ namespace HotelProject.DataAccessLayer.EntityFramework
 {
     public class EfBookingDal : GenericRepository<Booking>, IBookingDal
     {
-        Context context=new Context();
+        Context context = new Context();
         public EfBookingDal(Context context) : base(context)
         {
 
@@ -36,6 +36,12 @@ namespace HotelProject.DataAccessLayer.EntityFramework
         {
             var value = context.Bookings.Count();
             return value;
+        }
+
+        public List<Booking> LastSixBookings()
+        {
+            var values = context.Bookings.OrderByDescending(x => x.ID).Take(6).ToList();
+            return values;
         }
     }
 }
