@@ -3,7 +3,9 @@ using FluentValidation.AspNetCore;
 using HotelProject.DataAccessLayer.Concrete;
 using HotelProject.EntityLayer.Concrete;
 using HotelProject.WebUI.DTOs.GuestDTO;
+using HotelProject.WebUI.Models.Setting;
 using HotelProject.WebUI.ValidationRules.Guest;
+using HotelProject.WebUI.ValidationRules.Settings;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,6 +38,7 @@ namespace HotelProject.WebUI
             services.AddHttpClient();
             services.AddTransient<IValidator<CreateGuestDTO>, CreateGuestValidator>();
             services.AddTransient<IValidator<UpdateGuestDTO>, UpdateGuestValidator>();
+            services.AddTransient<IValidator<UserEditViewModel>, UpdateSettingsValidator>();
             services.AddControllersWithViews().AddFluentValidation();
             services.AddAutoMapper(typeof(Startup));
 
@@ -66,7 +69,7 @@ namespace HotelProject.WebUI
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404/","?code={0}");
+            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404/", "?code={0}");
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();

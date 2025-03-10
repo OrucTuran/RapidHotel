@@ -1,0 +1,48 @@
+﻿@model HotelProject.WebUI.Models.Setting.UserEditViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<h3>Profil Bilgileri ve Şifre GÜncelleme Alanı</h3>
+
+
+<form method="post">
+    <div class="mb-3">
+        <label>Adınız</label>
+        <input type="text" class="form-control" asp-for="Name" />
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Soyadınız</label>
+        <input type="text" class="form-control" asp-for="Surname" />
+        <span class="text-danger" asp-validation-for="Surname"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Email Adresiniz</label>
+        <input type="text" class="form-control" asp-for="Email" />
+        <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Kullanıcı Adınız</label>
+        <input type="text" class="form-control" asp-for="Username" readonly />
+        <span class="text-danger" asp-validation-for="Username"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Şifreniz</label>
+        <input type="password" class="form-control" asp-for="Password" />
+        <span class="text-danger" asp-validation-for="Password"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Şifreniz Tekrar</label>
+        <input type="password" class="form-control" asp-for="ConfrimPassword" />
+        <span class="text-danger" asp-validation-for="ConfrimPassword"></span>
+    </div>
+
+    <button class="btn mb-1 btn-rounded btn-outline-success">Bilgileri Güncelle</button>
+</form>
