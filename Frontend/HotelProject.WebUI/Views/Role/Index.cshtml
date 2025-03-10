@@ -1,0 +1,37 @@
+﻿@model List<HotelProject.EntityLayer.Concrete.AppRole>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<h3>Rol Listesi</h3>
+
+
+<table class="table table-bordered">
+    <tr>
+        <td><strong>#</strong></td>
+        <td><strong>Rol Adı</strong></td>
+        <td><strong>Sil</strong></td>
+        <td><strong>Güncelle</strong></td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>
+                <a href="/Role/DeleteRole/@item.Id/"
+                   class="btn mb-1 btn-rounded btn-outline-danger"
+                   onclick="return confirm('Bu rolü silmek istediğinizden emin misiniz?');">
+                    Sil
+                </a>
+            </td>
+            <td>
+                <a href="/Role/UpdateRole/@item.Id"
+                   class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a>
+            </td>
+        </tr>
+    }
+</table>
+<a href="/Role/AddRole/" class="btn mb-1 btn-rounded btn-outline-info">Yeni Rol Girişi</a>
