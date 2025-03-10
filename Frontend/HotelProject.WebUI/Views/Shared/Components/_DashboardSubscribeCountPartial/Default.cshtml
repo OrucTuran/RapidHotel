@@ -1,4 +1,6 @@
-﻿<div class="row">
+﻿@model HotelProject.WebUI.DTOs.FollowersDTO.SocialMediaFollowersDTO
+
+<div class="row">
     <div class="col-lg-3 col-sm-6">
         <div class="card">
             <div class="social-graph-wrapper widget-facebook">
@@ -7,14 +9,14 @@
             <div class="row">
                 <div class="col-6 border-right">
                     <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                        <h4 class="m-1">89k</h4>
-                        <p class="m-0">Friends</p>
+                        <h4 class="m-1">5842</h4>
+                        <p class="m-0">Arkadaşlar</p>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                        <h4 class="m-1">119k</h4>
-                        <p class="m-0">Followers</p>
+                        <h4 class="m-1">196</h4>
+                        <p class="m-0">Takip Edilen</p>
                     </div>
                 </div>
             </div>
@@ -28,14 +30,14 @@
             <div class="row">
                 <div class="col-6 border-right">
                     <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                        <h4 class="m-1">89k</h4>
-                        <p class="m-0">Friends</p>
+                        <h4 class="m-1">@Model.LinkedinConnections</h4>
+                        <p class="m-0">Bağlantı</p>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                        <h4 class="m-1">119k</h4>
-                        <p class="m-0">Followers</p>
+                        <h4 class="m-1">@Model.LinkedinFollowers</h4>
+                        <p class="m-0">Takipçi</p>
                     </div>
                 </div>
             </div>
@@ -49,14 +51,14 @@
             <div class="row">
                 <div class="col-6 border-right">
                     <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                        <h4 class="m-1">89k</h4>
-                        <p class="m-0">Friends</p>
+                        <h4 class="m-1">@Model.InstagramFollowing</h4>
+                        <p class="m-0">Takip Edilen</p>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                        <h4 class="m-1">119k</h4>
-                        <p class="m-0">Followers</p>
+                        <h4 class="m-1">@Model.InstagramFollowers</h4>
+                        <p class="m-0">Takipçi</p>
                     </div>
                 </div>
             </div>
@@ -70,14 +72,14 @@
             <div class="row">
                 <div class="col-6 border-right">
                     <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                        <h4 class="m-1">89k</h4>
-                        <p class="m-0">Friends</p>
+                        <h4 class="m-1">@Model.TwitterFollowing</h4>
+                        <p class="m-0">Takip Edilen</p>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                        <h4 class="m-1">119k</h4>
-                        <p class="m-0">Followers</p>
+                        <h4 class="m-1">@Model.TwitterFollowers</h4>
+                        <p class="m-0">Takipçi</p>
                     </div>
                 </div>
             </div>
