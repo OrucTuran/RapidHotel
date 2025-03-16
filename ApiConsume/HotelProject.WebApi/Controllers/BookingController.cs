@@ -64,8 +64,19 @@ namespace HotelProject.WebApi.Controllers
             return Ok();
         }
 
+        [HttpGet("BookingCanceled")]
+        public IActionResult BookingCanceled(int id)
+        {
+            _bookingService.TBookingStatusChangeCancel(id);
+            return Ok();
+        }
 
-
+        [HttpGet("BookingWait")]
+        public IActionResult BookingWait(int id)
+        {
+            _bookingService.TTBookingStatusChangeWait(id);
+            return Ok();
+        }
 
 
 

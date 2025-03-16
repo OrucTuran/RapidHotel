@@ -14,5 +14,7 @@ namespace HotelProject.BusinessLayer.Abstract
         int TGetBookingCount();
         List<Booking> TLastSixBookings();
         void TBookingStatusChangeApproved3(int id);
+        public void TBookingStatusChangeCancel(int id);
+        public void TTBookingStatusChangeWait(int id);
     }
 }
